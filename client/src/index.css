@@ -25,3 +25,23 @@
   --muted: #1a1a1a;
   --muted-foreground: #a3a3a3;
 }
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  background: radial-gradient(circle at 10% 0%, rgba(18, 96, 204, 0.18), transparent 35%),
+    radial-gradient(circle at 90% 18%, rgba(22, 157, 255, 0.12), transparent 40%),
+    var(--background);
+  color: var(--foreground);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
