@@ -3,11 +3,12 @@ import { AnimatePresence } from "framer-motion";
 import Sidebar from "@/components/Sidebar";
 import Hero from "@/components/Hero";
 import Projects from "@/components/Projects";
+import Skills from "@/components/Skills";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
 import IntroAnimation from "@/components/IntroAnimation";
 
-const sectionIds = ["home", "projects", "about", "contact"] as const;
+const sectionIds = ["home", "projects", "about", "skills", "contact"] as const;
 
 export default function Home() {
   const [showIntro, setShowIntro] = useState(true);
@@ -59,21 +60,28 @@ export default function Home() {
           >
             <Hero />
           </section>
+          
+          <section
+            id="about"
+            className="min-h-screen pt-8 md:pt-20   px-0 sm:px-0"
+          >
+            <About />
+          </section>
 
+              <section
+            id="skills"
+            className="min-h-screen pt-8 md:pt-20 md:px-20 px-6"
+          >
+            <Skills />
+          </section>
           <section
             id="projects"
             className="min-h-screen pt-8 md:pt-20  px-13 sm:px-16"
           >
             <Projects />
           </section>
-
-          <section
-            id="about"
-            className="min-h-screen pt-8 md:pt-20   px-5 sm:px-16"
-          >
-            <About />
-          </section>
-
+          
+      
           <section
             id="contact"
             className="min-h-[80vh] pt-8 md:pt-20 pb-20 md:pb-32   px-5 sm:px-8"

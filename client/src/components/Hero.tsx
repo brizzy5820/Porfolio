@@ -64,13 +64,13 @@ export default function Hero() {
 
           {/* Content */}
           <div className="absolute inset-0 flex items-center">
-            <div className="max-w-4xl px-8 md:px-16">
+            <div className="max-w-4xl px-5 md:px-16">
 
               <motion.h1
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-4xl md:text-6xl font-extrabold text-white leading-tight"
+                className="text-3xl md:text-6xl font-extrabold text-white leading-tight"
               >
                 {slides[index].title}
               </motion.h1>
