@@ -193,7 +193,7 @@ export default function Skills() {
           
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <h2
-              className="text-3xl md:text-5xl font-inter font-bold tracking-tight leading-[1.1] font-outfit"
+              className="text-3xl md:text-5xl flex flex-col gap-4 font-inter font-bold tracking-tight leading-[1.1] font-outfit"
             >
               Technologies
               <br className="hidden sm:block" />
