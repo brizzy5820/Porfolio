@@ -73,7 +73,7 @@ function SkillRow({
       <motion.div
         animate={{ scale: hovered ? 1.1 : 1, rotate: hovered ? 6 : 0 }}
         transition={{ type: "spring", stiffness: 300, damping: 18 }}
-        className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+        className="w-12 h-12 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center flex-shrink-0"
         style={{
           background: "rgba(255,255,255,0.05)",
           border: "1px solid rgba(255,255,255,0.09)",
@@ -84,7 +84,7 @@ function SkillRow({
         <img
           src={item.logo}
           alt={item.name}
-          className="w-5 h-5 sm:w-6 sm:h-6 object-contain"
+          className="w-6 h-6 sm:w-6 sm:h-6 object-contain"
           style={{ filter: "drop-shadow(0 1px 4px rgba(0,0,0,0.6))" }}
         />
       </motion.div>
@@ -92,7 +92,7 @@ function SkillRow({
       {/* name + bar */}
       <div className="flex-1 min-w-0">
         <div className="flex items-center justify-between mb-2">
-          <span className="text-sm font-semibold text-white/90 tracking-wide font-outfit">{item.name}</span>
+          <span className="text-base font-semibold text-white/90 tracking-wide font-outfit">{item.name}</span>
           <motion.span
             animate={{ opacity: hovered ? 1 : 0.4 }}
             className="text-xs font-bold tabular-nums"
@@ -323,13 +323,13 @@ export default function Skills() {
                       style={{ background: group.accent, boxShadow: `0 0 12px ${group.accent}80` }}
                     />
                     <span
-                      className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em]"
+                      className=" text-sm font-bold uppercase tracking-[0.25em]"
                       style={{ color: group.accent }}
                     >
                       {group.category}
                     </span>
                   </div>
-                  <p className="text-white/50 text-sm leading-relaxed sm:pl-5 font-medium">{group.description}</p>
+                  <p className="text-white/50 text-base leading-relaxed sm:pl-5 font-medium">{group.description}</p>
                 </div>
 
                 {/* mini logo row */}
@@ -340,14 +340,14 @@ export default function Skills() {
                       initial={{ opacity: 0, scale: 0.5, rotate: -10 }}
                       animate={{ opacity: 1, scale: 1, rotate: 0 }}
                       transition={{ delay: i * 0.08, duration: 0.4, type: "spring", stiffness: 200 }}
-                      className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center backdrop-blur-sm"
+                      className="w-12 h-12  sm:w-11 sm:h-11 rounded-xl flex items-center justify-center backdrop-blur-sm"
                       style={{
                         background: "rgba(255,255,255,0.03)",
                         border: "1px solid rgba(255,255,255,0.08)",
                       }}
                       title={item.name}
                     >
-                      <img src={item.logo} alt={item.name} className="w-4 h-4 sm:w-5 sm:h-5 object-contain opacity-80 hover:opacity-100 transition-opacity" />
+                      <img src={item.logo} alt={item.name} className="w-5.5 h-5.5 sm:w-5 sm:h-5 object-contain opacity-80 hover:opacity-100 transition-opacity" />
                     </motion.div>
                   ))}
                 </div>

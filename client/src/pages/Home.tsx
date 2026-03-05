@@ -76,7 +76,7 @@ export default function Home() {
           </section>
           <section
             id="projects"
-            className="min-h-screen pt-8 md:pt-20  px-13 sm:px-16"
+           className="min-h-screen pt-8 md:pt-20 md:px-20 px-6"
           >
             <Projects />
           </section>

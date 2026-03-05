@@ -38,128 +38,133 @@ export default function Projects() {
   const prevSlide = () =>
     setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
 
-  return (
-    <div className="w-full">
-      {/* Header */}
-      <div className="flex flex-wrap items-end justify-between gap-4 mb-10">
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-        >
-          <p className="font-mono text-xs uppercase tracking-[0.3em] text-primary mb-3">
-            Selected work
-          </p>
+  const project = projects[currentIndex];
 
-          <h2 className="text-4xl md:text-5xl font-black font-display text-white text-balance">
+  return (
+    <section className="w-full max-w-7xl mx-auto  text-white">
+
+      {/* Header */}
+      <div className="flex items-end justify-between flex-wrap gap-6 mb-12">
+        <div>
+              <div className="flex items-center gap-3 mb-4">
+            <div className="h-px w-8 bg-white/20"></div>
+            <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.3em] text-white/40">
+              Selected works
+            </p>
+          </div>
+
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
             Projects built for{" "}
-            <span className="text-primary">results and retention</span>
+            <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
+              performance
+            </span>
           </h2>
-        </motion.div>
+        </div>
 
         <div className="flex gap-3">
           <button
             onClick={prevSlide}
-            className="w-11 h-11 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-white/10 transition-colors backdrop-blur-md"
+            className="w-11 h-11 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/10 transition"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
 
           <button
             onClick={nextSlide}
-            className="w-11 h-11 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-primary hover:border-primary transition-colors backdrop-blur-md"
+            className="w-11 h-11 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/10 transition"
           >
             <ChevronRight className="w-5 h-5" />
           </button>
         </div>
       </div>
 
-      {/* Slider */}
-      <div className="relative w-full aspect-[4/5] sm:aspect-[4/3] md:aspect-[21/9] rounded-3xl overflow-hidden bg-[#111] border border-white/10 shadow-2xl">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentIndex}
-            initial={{ opacity: 0, scale: 0.95, rotateX: -5 }}
-            animate={{ opacity: 1, scale: 1, rotateX: 0 }}
-            exit={{ opacity: 0, scale: 1.02, filter: "blur(6px)" }}
-            transition={{ duration: 0.55, ease: "easeInOut" }}
-            className="absolute inset-0"
-          >
-            {projects[currentIndex].videoSrc ? (
+      {/* Project Card */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentIndex}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 30 }}
+          transition={{ duration: 0.6 }}
+          className="rounded-3xl border border-white/10 bg-[#0a0a0a] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.45)] backdrop-blur-xl"
+        >
+
+          {/* Video */}
+          <div className="w-full aspect-video bg-black">
+            {project.videoSrc ? (
               <video
-                src={projects[currentIndex].videoSrc}
+                src={project.videoSrc}
                 autoPlay
                 loop
                 muted
                 playsInline
-                className="w-full h-full object-cover opacity-60 mix-blend-screen"
+                className="w-full h-full object-cover"
               />
             ) : (
-              <div className="w-full h-full flex flex-col items-center justify-center text-white/20">
-                <div className="w-10 h-10 border-2 border-primary/50 border-t-transparent rounded-full animate-spin mb-4" />
-                <p className="font-mono text-sm uppercase tracking-widest">
-                  Video Loading...
-                </p>
+              <div className="w-full h-full flex items-center justify-center text-white/30">
+                Loading video...
               </div>
             )}
+          </div>
+            {/* Dim Overlay */}
+              <div className="absolute inset-0 bg-black/35"></div>
+            
+          {/* Content */}
+          <div className="p-6 md:p-10">
 
-            {/* Overlay Content */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex flex-col justify-end p-6 sm:p-8 md:p-12">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.35 }}
-                className="max-w-3xl"
-              >
-                <div className="flex flex-wrap gap-2 mb-5">
-                  {projects[currentIndex].tech.map((t) => (
-                    <span
-                      key={t}
-                      className="text-[10px] uppercase tracking-widest font-mono px-3 py-1.5 bg-primary/20 text-blue-300 border border-primary/30 rounded-full backdrop-blur-sm"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-
-                <h3 className="text-2xl sm:text-3xl md:text-5xl font-bold font-display text-white mb-3">
-                  {projects[currentIndex].title}
-                </h3>
-
-                <p className="text-white/65 text-sm sm:text-base md:text-lg leading-relaxed mb-7 max-w-2xl font-light">
-                  {projects[currentIndex].description}
-                </p>
-
-                <div className="flex flex-wrap gap-3">
-                  <button className="flex items-center gap-2 px-5 py-3 bg-white text-black rounded-full text-sm font-semibold hover:bg-gray-200 transition-colors">
-                    <ExternalLink className="w-4 h-4" /> Live Demo
-                  </button>
-
-                  <button className="flex items-center gap-2 px-5 py-3 bg-black/50 border border-white/20 text-white rounded-full text-sm font-semibold hover:bg-white/10 backdrop-blur-md transition-colors">
-                    <Github className="w-4 h-4" /> Source Code
-                  </button>
-                </div>
-              </motion.div>
+            {/* Tech Stack */}
+            <div className="flex flex-wrap gap-2 mb-5">
+              {project.tech.map((t) => (
+                <span
+                  key={t}
+                  className="text-[10px] uppercase tracking-widest px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/70"
+                >
+                  {t}
+                </span>
+              ))}
             </div>
-          </motion.div>
-        </AnimatePresence>
-      </div>
+
+            {/* Title */}
+            <h3 className="text-2xl md:text-4xl font-bold mb-3">
+              {project.title}
+            </h3>
+
+            {/* Description */}
+            <p className="text-white/60 text-sm md:text-lg leading-relaxed max-w-3xl mb-7">
+              {project.description}
+            </p>
+
+            {/* Buttons */}
+            <div className="flex flex-wrap gap-3">
+              <button className="flex items-center gap-2 px-5 py-3 bg-white text-black rounded-full text-sm font-semibold hover:bg-gray-200 transition">
+                <ExternalLink className="w-4 h-4" />
+                Live Demo
+              </button>
+
+              <button className="flex items-center gap-2 px-5 py-3 border border-white/20 rounded-full text-sm font-semibold hover:bg-white/10 transition">
+                <Github className="w-4 h-4" />
+                Source Code
+              </button>
+            </div>
+          </div>
+        </motion.div>
+      </AnimatePresence>
 
       {/* Indicators */}
-      <div className="flex justify-center gap-3 mt-8">
-        {projects.map((project, i) => (
+      <div className="flex justify-center gap-3 mt-10">
+        {projects.map((p, i) => (
           <button
-            key={project.id}
+            key={p.id}
             onClick={() => setCurrentIndex(i)}
             className={`h-1.5 rounded-full transition-all duration-500 ${
               i === currentIndex
-                ? "w-16 bg-primary"
+                ? "w-16 bg-cyan-400"
                 : "w-4 bg-white/20 hover:bg-white/40"
             }`}
-            aria-label={`View ${project.title}`}
           />
         ))}
       </div>
-    </div>
+
+    </section>
   );
 }

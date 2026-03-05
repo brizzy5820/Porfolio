@@ -23,7 +23,12 @@ export default function About() {
 
   return (
     <section className="w-full min-h-screen relative bg-[#000000] text-white px-6 md:px-20 py-20 flex flex-col justify-center overflow-hidden">
-
+        <div className="flex items-center gap-3 mb-4">
+            <div className="h-px w-8 bg-white/20"></div>
+            <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.3em] text-white/40">
+            About 
+            </p>
+          </div>
       {/* Animated Gradient Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         <motion.div
