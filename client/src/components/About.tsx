@@ -83,7 +83,7 @@ export default function About() {
             flex items-center justify-center overflow-hidden bg-[#111] relative group"
           >
             <img
-              src="images/profileplaceholderii.jpg"
+              src="images/ChatGPT Image Mar 7, 2026, 09_51_06 PM.jpg"
               alt="Profile"
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
