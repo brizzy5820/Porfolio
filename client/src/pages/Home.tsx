@@ -8,7 +8,7 @@ import Skills from "@/components/Skills";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
 import IntroAnimation from "@/components/IntroAnimation";
-import FloatingWhatsApp from "@/components/FloatingWhatsapp";
+import FloatingWhatsapp from "@/components/FloatingWhatsapp";
 
 const sectionIds = ["home", "projects", "about", "skills", "contact"] as const;
 
@@ -95,7 +95,7 @@ export default function Home() {
           >
             <Footer />
           </section>
-          <FloatingWhatsApp />
+          <FloatingWhatsapp />
         </div>
       </main>
     </div>
