@@ -113,7 +113,7 @@ export default function Projects() {
           <div className="p-6 md:p-10">
 
             {/* Tech Stack */}
-            <div className="flex flex-wrap gap-2 mb-5">
+            <div className="flex flex-wrap gap-2 mb-5 hidden">
               {project.tech.map((t) => (
                 <span
                   key={t}
@@ -141,7 +141,7 @@ export default function Projects() {
                 Live Demo
               </button>
 
-              <button className="flex items-center gap-2 px-5 py-3 border border-white/20 rounded-full text-sm font-semibold hover:bg-white/10 transition">
+              <button className="flex items-center hidden gap-2 px-5 py-3 border border-white/20 rounded-full text-sm font-semibold hover:bg-white/10 transition">
                 <Github className="w-4 h-4" />
                 Source Code
               </button>

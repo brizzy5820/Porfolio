@@ -3,113 +3,127 @@ import { Send, MapPin, Phone, ArrowUpRight } from "lucide-react";
 
 export default function Contact() {
   return (
-    <div className="w-full max-w-5xl mx-auto bg-white/5 border border-white/10 rounded-[2.2rem] p-6 sm:p-8 md:p-14 backdrop-blur-md relative overflow-hidden">
+    <section className="w-full px-6 md:px-10 py-24 flex justify-center relative">
 
       {/* Background Glow */}
-      <div className="absolute top-0 right-0 w-80 h-80 bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-[-10%] right-[10%] w-[420px] h-[420px] bg-cyan-500/10 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-[-10%] left-[10%] w-[420px] h-[420px] bg-purple-500/10 blur-[120px] rounded-full pointer-events-none" />
 
-      {/* Header */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 60 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
+        transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="mb-10 md:mb-14 relative z-10"
+        className="w-full max-w-6xl bg-[#0a0a0a] border border-white/10 rounded-[2.2rem] p-6 sm:p-10 md:p-14 backdrop-blur-xl relative overflow-hidden shadow-[0_20px_70px_rgba(0,0,0,0.6)]"
       >
-        <p className="font-mono text-xs uppercase tracking-[0.3em] text-primary mb-3">
-          Start a project
-        </p>
 
-        <h2 className="text-4xl md:text-5xl font-black font-display text-white mb-4 text-balance">
-          Let&apos;s build something your clients{" "}
-          <span className="text-primary">instantly trust</span>
-        </h2>
-
-        <p className="text-white/55 text-base md:text-lg font-light max-w-2xl">
-          Share your goals, timeline, and vision. I&apos;ll respond with a clear
-          plan focused on outcomes — not just aesthetics.
-        </p>
-      </motion.div>
-
-      {/* Content Grid */}
-      <div className="grid lg:grid-cols-5 gap-10 md:gap-14 relative z-10">
-
-        {/* Contact Info */}
+        {/* Header */}
         <motion.div
-          className="lg:col-span-2 space-y-7"
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1.4 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
           viewport={{ once: true }}
+          className="mb-12 md:mb-16"
         >
-          {[
-            { icon: Send, title: "Email", value: "hello@hypertech.dev" },
-            { icon: MapPin, title: "Location", value: "San Francisco, CA · Remote worldwide" },
-            { icon: Phone, title: "Phone", value: "+1 (555) 123-4567" },
-          ].map((item) => {
-            const Icon = item.icon;
+          <p className="font-mono text-xs uppercase tracking-[0.35em] text-cyan-400 mb-3">
+            Start a project
+          </p>
 
-            return (
-              <div key={item.title} className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary shrink-0">
-                  <Icon className="w-5 h-5" />
-                </div>
-                <div className="pt-1">
-                  <h4 className="text-white font-medium mb-1 font-display tracking-wide">
-                    {item.title}
-                  </h4>
-                  <p className="text-white/60 text-sm">{item.value}</p>
-                </div>
-              </div>
-            );
-          })}
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-5 tracking-tight leading-tight">
+            Let’s build something your clients{" "}
+            <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
+              instantly trust
+            </span>
+          </h2>
 
-          {/* WhatsApp CTA */}
-          <button className="group inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-sm text-white/80 hover:text-white hover:border-primary/50 transition-colors">
-            Prefer WhatsApp? Let&apos;s chat
-            <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-          </button>
+          <p className="text-white/60 text-base md:text-lg max-w-2xl leading-relaxed">
+            Share your goals, timeline, and vision. I’ll respond with a clear
+            strategy focused on outcomes — not just aesthetics.
+          </p>
         </motion.div>
 
-        {/* Form */}
-        <motion.form
-          className="lg:col-span-3 space-y-4"
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1.4 }}
-          viewport={{ once: true }}
-          onSubmit={(e) => e.preventDefault()}
-        >
-          <div className="grid sm:grid-cols-2 gap-4">
+        {/* Content Grid */}
+        <div className="grid lg:grid-cols-5 gap-12 md:gap-16">
+
+          {/* Contact Info */}
+          <motion.div
+            className="lg:col-span-2 space-y-8"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1 }}
+            viewport={{ once: true }}
+          >
+            {[
+              { icon: Send, title: "Email", value: "hello@hypertech.dev" },
+              { icon: MapPin, title: "Location", value: "Remote · Worldwide" },
+              { icon: Phone, title: "Phone", value: "+1 (555) 123-4567" },
+            ].map((item) => {
+              const Icon = item.icon;
+
+              return (
+                <div key={item.title} className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-cyan-400 shrink-0">
+                    <Icon className="w-5 h-5" />
+                  </div>
+
+                  <div>
+                    <h4 className="text-white font-medium mb-1 tracking-wide">
+                      {item.title}
+                    </h4>
+                    <p className="text-white/55 text-sm">{item.value}</p>
+                  </div>
+                </div>
+              );
+            })}
+
+            {/* WhatsApp CTA */}
+            <button className="group inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-2.5 text-sm text-white/80 hover:text-white hover:border-cyan-400/50 transition-all">
+              Prefer WhatsApp? Let’s chat
+              <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </button>
+          </motion.div>
+
+          {/* Form */}
+          <motion.form
+            className="lg:col-span-3 space-y-4"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1 }}
+            viewport={{ once: true }}
+            onSubmit={(e) => e.preventDefault()}
+          >
+            <div className="grid sm:grid-cols-2 gap-4">
+              <input
+                type="text"
+                placeholder="Your name"
+                className="bg-black/60 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder:text-white/35 focus:outline-none focus:border-cyan-400 focus:bg-white/5 transition-all w-full"
+              />
+
+              <input
+                type="email"
+                placeholder="Business email"
+                className="bg-black/60 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder:text-white/35 focus:outline-none focus:border-cyan-400 focus:bg-white/5 transition-all w-full"
+              />
+            </div>
+
             <input
               type="text"
-              placeholder="Your name"
-              className="bg-black/50 border border-white/10 rounded-2xl px-5 py-3.5 text-white placeholder:text-white/35 focus:outline-none focus:border-primary focus:bg-white/5 transition-all w-full"
+              placeholder="Project type (website, dashboard, app...)"
+              className="w-full bg-black/60 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder:text-white/35 focus:outline-none focus:border-cyan-400 focus:bg-white/5 transition-all"
             />
-            <input
-              type="email"
-              placeholder="Business email"
-              className="bg-black/50 border border-white/10 rounded-2xl px-5 py-3.5 text-white placeholder:text-white/35 focus:outline-none focus:border-primary focus:bg-white/5 transition-all w-full"
+
+            <textarea
+              rows={5}
+              placeholder="Tell me what success looks like for this project."
+              className="w-full bg-black/60 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder:text-white/35 focus:outline-none focus:border-cyan-400 focus:bg-white/5 transition-all resize-none"
             />
-          </div>
 
-          <input
-            type="text"
-            placeholder="Project type (website, dashboard, app...)"
-            className="w-full bg-black/50 border border-white/10 rounded-2xl px-5 py-3.5 text-white placeholder:text-white/35 focus:outline-none focus:border-primary focus:bg-white/5 transition-all"
-          />
-
-          <textarea
-            rows={5}
-            placeholder="Tell me what success looks like for this project."
-            className="w-full bg-black/50 border border-white/10 rounded-2xl px-5 py-3.5 text-white placeholder:text-white/35 focus:outline-none focus:border-primary focus:bg-white/5 transition-all resize-none"
-          />
-
-          <button className="w-full py-4 bg-primary text-white font-medium rounded-2xl hover:bg-primary/90 transition-all shadow-[0_0_30px_rgba(18,96,204,0.3)] hover:shadow-[0_0_40px_rgba(18,96,204,0.5)] tracking-wide">
-            Send project brief
-          </button>
-        </motion.form>
-      </div>
-    </div>
+            <button className="w-full py-4 rounded-xl font-medium text-white bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 hover:opacity-90 transition-all shadow-[0_0_40px_rgba(59,130,246,0.35)] tracking-wide">
+              Send project brief
+            </button>
+          </motion.form>
+        </div>
+      </motion.div>
+    </section>
   );
 }

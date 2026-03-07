@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import Sidebar from "@/components/Sidebar";
 import Hero from "@/components/Hero";
+import Footer from "@/components/Footer";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 import About from "@/components/About";
@@ -69,7 +70,6 @@ export default function Home() {
           </section>
 
               <section
-            id="skills"
             className="min-h-screen pt-8 md:pt-20 md:px-20 px-6"
           >
             <Skills />
@@ -88,7 +88,12 @@ export default function Home() {
           >
             <Contact />
           </section>
-
+           <section
+      
+            className="min-h-[80vh] pt-8 md:pt-20 pb-20 md:pb-32   px-5 sm:px-8"
+          >
+            <Footer />
+          </section>
         </div>
       </main>
     </div>
