@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-export default function FloatingWhatsapp() {
+export default function Floatingwhatsapp() {
   return (
     <motion.a
       href="https://wa.me/2348106146952?text=Hello%20Dev%20Bolu"
