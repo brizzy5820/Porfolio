@@ -111,7 +111,8 @@ export default function Sidebar({ activeSection, setActiveSection }: SidebarProp
       <nav className="fixed top-0 inset-x-0 z-50 md:hidden border-b border-white/10 bg-black/85 bg-transparent backdrop-blur-xl px-4 py-3">
         <div className="flex items-center justify-between gap-2">
           <div>
-            <p className="text-white font-display tracking-wide text-lg leading-none">
+            <p className="text-white font-display font-bold
+             tracking-wide text-lg leading-none">
               DEV BOLU
             </p>
          
