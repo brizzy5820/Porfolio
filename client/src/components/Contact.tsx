@@ -3,7 +3,7 @@ import { Send, MapPin, Phone, ArrowUpRight } from "lucide-react";
 
 export default function Contact() {
   return (
-    <section className="w-full px-6 md:px-10 py-24 flex justify-center relative">
+    <section className="w-full  md:px-10 py-24 flex justify-center relative">
 
       {/* Background Glow */}
       <div className="absolute top-[-10%] right-[10%] w-[420px] h-[420px] bg-cyan-500/10 blur-[120px] rounded-full pointer-events-none" />
@@ -25,7 +25,7 @@ export default function Contact() {
           viewport={{ once: true }}
           className="mb-12 md:mb-16"
         >
-          <p className="font-mono text-xs uppercase tracking-[0.35em] text-cyan-400 mb-3">
+          <p className="font-mono text-xs uppercase pt-4 tracking-[0.35em] text-cyan-400 mb-3">
             Start a project
           </p>
 
@@ -54,9 +54,9 @@ export default function Contact() {
             viewport={{ once: true }}
           >
             {[
-              { icon: Send, title: "Email", value: "hello@hypertech.dev" },
+              { icon: Send, title: "Email", value: "egbeyemiboluwatife@gmail.com" },
               { icon: MapPin, title: "Location", value: "Remote · Worldwide" },
-              { icon: Phone, title: "Phone", value: "+1 (555) 123-4567" },
+              { icon: Phone, title: "Phone", value: "+234 8106146952" },
             ].map((item) => {
               const Icon = item.icon;
 
@@ -77,10 +77,10 @@ export default function Contact() {
             })}
 
             {/* WhatsApp CTA */}
-            <button className="group inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-2.5 text-sm text-white/80 hover:text-white hover:border-cyan-400/50 transition-all">
+            <a href="https://wa.me/2348106146952?text=Hello%20Dev%20Bolu" target='blank' className="group inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-2.5 text-sm text-white/80 hover:text-white hover:border-cyan-400/50 transition-all">
               Prefer WhatsApp? Let’s chat
               <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-            </button>
+            </a>
           </motion.div>
 
           {/* Form */}

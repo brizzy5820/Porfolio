@@ -8,6 +8,7 @@ import Skills from "@/components/Skills";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
 import IntroAnimation from "@/components/IntroAnimation";
+import FloatingWhatsApp from "@/components/FloatingWhatsapp";
 
 const sectionIds = ["home", "projects", "about", "skills", "contact"] as const;
 
@@ -53,7 +54,7 @@ export default function Home() {
       />
 
       <main className="flex-1 relative h-screen overflow-y-auto overflow-x-hidden scroll-smooth bg-[#050505]">
-        <div className="max-w-6xl mx-auto px-0 pt-0 pb-14 sm:px-8 md:px-0 md:py-0 flex flex-col gap-24 md:gap-32">
+        <div className="max-w-6xl mx-auto px-0 pt-0  sm:px-8 md:px-0 md:py-0 flex flex-col gap-24 md:gap-32">
           
           <section
             id="home"
@@ -84,16 +85,17 @@ export default function Home() {
       
           <section
             id="contact"
-            className="min-h-[80vh] pt-8 md:pt-20 pb-20 md:pb-32   px-5 sm:px-8"
+            className="min-h-screen pt-8 md:pt-20   px-0 sm:px-0"
           >
             <Contact />
           </section>
            <section
       
-            className="min-h-[80vh] pt-8 md:pt-20 pb-20 md:pb-32   px-5 sm:px-8"
+            className="min-h-[80vh] pt-8 md:pt-20 md:pb-32   px-5 sm:px-8"
           >
             <Footer />
           </section>
+          <FloatingWhatsApp />
         </div>
       </main>
     </div>

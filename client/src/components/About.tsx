@@ -83,7 +83,7 @@ export default function About() {
             flex items-center justify-center overflow-hidden bg-[#111] relative group"
           >
             <img
-              src="images/myimage.jpg"
+              src="images/profileplaceholderii.jpg"
               alt="Profile"
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
