@@ -55,7 +55,7 @@ export default function Sidebar({ activeSection, setActiveSection }: SidebarProp
       </h2>
 
       <span className="text-[10px] text-muted-foreground font-mono uppercase tracking-widest mt-1 hidden lg:block">
-        Conversion-driven web studio
+        Conversion-driven web solutions
       </span>
     </div>
   )}
