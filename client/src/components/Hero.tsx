@@ -8,7 +8,7 @@ const slides = [
     description:
       "Modern software systems built with scalable architecture to help your business offer fast and wide service.",
     image:
-      "https://plus.unsplash.com/premium_photo-1668473366952-45f06fbf6492?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1568952433726-3896e3881c65?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHRlY2h8ZW58MHx8MHx8fDA%3D",
   },
   {
     id: 2,
@@ -16,7 +16,7 @@ const slides = [
     description:
       "Strategic UX, persuasive copy, and performance-driven development that transforms visitors into qualified clients.",
     image:
-      "https://plus.unsplash.com/premium_photo-1733306503329-7a8c701fa9ad?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1650473395434-8674d953ef2f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjB8fHRlY2glMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww",
   },
 
   {

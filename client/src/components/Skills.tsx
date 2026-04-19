@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const skills = [
   {
@@ -125,12 +125,28 @@ function SkillRow({
 export default function Skills() {
   const [active, setActive] = useState(0);
   const [direction, setDirection] = useState(1);
+const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+const tabsContainerRef = useRef<HTMLDivElement>(null);
 
-  function goTo(i: number) {
-    setDirection(i > active ? 1 : -1);
-    setActive(i);
+const goTo = (i: number) => {
+  setActive(i);
+
+  const tab = tabRefs.current[i];
+  const container = tabsContainerRef.current;
+
+  if (tab && container) {
+    const tabLeft = tab.offsetLeft;
+    const tabWidth = tab.offsetWidth;
+    const containerWidth = container.offsetWidth;
+
+    const scrollTo = tabLeft - containerWidth / 2 + tabWidth / 2;
+
+    container.scrollTo({
+      left: scrollTo,
+      behavior: "smooth",
+    });
   }
-
+};
   const group = skills[active];
 
   const slideVariants = {
@@ -217,57 +233,61 @@ export default function Skills() {
         </motion.div>
 
         {/* Tab bar */}
-        <div className="relative mb-8 sm:mb-12">
-          {/* Scroll fade masks for mobile */}
-          <div className="absolute left-0 top-0 bottom-0 w-4 bg-gradient-to-r from-[#050505] to-transparent z-10 sm:hidden"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-[#050505] to-transparent z-10 sm:hidden"></div>
-          
-          <div
-            className="flex items-center gap-1 sm:gap-2 p-1.5 rounded-2xl w-full overflow-x-auto hide-scrollbar snap-x"
-            style={{ 
-              background: "rgba(255,255,255,0.02)", 
-              border: "1px solid rgba(255,255,255,0.05)",
-              backdropFilter: "blur(10px)"
-            }}
-          >
-            {skills.map((s, i) => {
-              const isActive = i === active;
-              return (
-                <button
-                  key={i}
-                  onClick={() => goTo(i)}
-                  className="relative flex-1 min-w-[140px] sm:min-w-0 px-4 py-3 sm:py-3.5 rounded-xl text-[13px] sm:text-sm font-semibold tracking-wide transition-all duration-300 outline-none snap-start font-outfit"
-                  style={{
-                    color: isActive ? "#fff" : "rgba(255,255,255,0.4)",
-                  }}
-                >
-                  {isActive && (
-                    <motion.div
-                      layoutId="tab-pill"
-                      className="absolute inset-0 rounded-xl"
-                      style={{ 
-                        background: "rgba(255,255,255,0.06)", 
-                        border: `1px solid ${s.accent}40`,
-                        boxShadow: `inset 0 0 20px ${s.accent}10`
-                      }}
-                      transition={{ type: "spring", stiffness: 400, damping: 35 }}
-                    />
-                  )}
-                  <span className="relative z-10 flex items-center justify-center gap-2 sm:gap-2.5 whitespace-nowrap">
-                    {isActive && (
-                      <motion.span
-                        layoutId="tab-dot"
-                        className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full flex-shrink-0"
-                        style={{ background: s.accent, boxShadow: `0 0 8px ${s.accent}80` }}
-                      />
-                    )}
-                    {s.category}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
+<div className="relative mb-8 sm:mb-12">
+  {/* Scroll fade masks for mobile */}
+  <div className="absolute left-0 top-0 bottom-0 w-4 bg-gradient-to-r from-[#050505] to-transparent z-10 sm:hidden pointer-events-none"></div>
+  <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-[#050505] to-transparent z-10 sm:hidden pointer-events-none"></div>
+
+  <div
+    ref={tabsContainerRef}
+    className="flex items-center gap-1 sm:gap-2 p-1.5 rounded-2xl w-full overflow-x-auto hide-scrollbar"
+    style={{
+      background: "rgba(255,255,255,0.02)",
+      border: "1px solid rgba(255,255,255,0.05)",
+      backdropFilter: "blur(10px)",
+      scrollbarWidth: "none",        // Firefox
+      msOverflowStyle: "none",       // IE/Edge
+    }}
+  >
+    {skills.map((s, i) => {
+      const isActive = i === active;
+      return (
+        <button
+          key={i}
+          ref={(el) => { tabRefs.current[i] = el; }}
+          onClick={() => goTo(i)}
+          className="relative flex-1 min-w-[140px] sm:min-w-0 px-4 py-3 sm:py-3.5 rounded-xl text-[13px] sm:text-sm font-semibold tracking-wide transition-all duration-300 outline-none font-outfit"
+          style={{
+            color: isActive ? "#fff" : "rgba(255,255,255,0.4)",
+          }}
+        >
+          {isActive && (
+            <motion.div
+              layoutId="tab-pill"
+              className="absolute inset-0 rounded-xl"
+              style={{
+                background: "rgba(255,255,255,0.06)",
+                border: `1px solid ${s.accent}40`,
+                boxShadow: `inset 0 0 20px ${s.accent}10`,
+              }}
+              transition={{ type: "spring", stiffness: 400, damping: 35 }}
+            />
+          )}
+          <span className="relative z-10 flex items-center justify-center gap-2 sm:gap-2.5 whitespace-nowrap">
+            {isActive && (
+              <motion.span
+                layoutId="tab-dot"
+                className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full flex-shrink-0"
+                style={{ background: s.accent, boxShadow: `0 0 8px ${s.accent}80` }}
+              />
+            )}
+            {s.category}
+          </span>
+        </button>
+      );
+    })}
+  </div>
+</div>
 
         {/* Panel */}
         <motion.div

@@ -8,8 +8,10 @@ const projects = [
     title: "Conversion-Driven E-Commerce",
     description:
       "A premium storefront optimized for speed, trust, and checkout completion. We redesigned the product narrative and reduced purchase friction from first click to payment.",
-    videoSrc: "/videos/ecommerce.mp4",
+    videoSrc:
+      "/videos/BYTE-BUY _ Order Confirmed - Google Chrome 2026-03-09 13-44-05.mp4",
     tech: ["React", "Node.js", "Tailwind", "Stripe"],
+    liveDemoUrl: "https://www.bytebuy.name.ng",
   },
   {
     id: 2,
@@ -18,6 +20,7 @@ const projects = [
       "A data experience for decision-makers. Complex reporting was transformed into clear, actionable dashboards with fluid transitions and context-rich visual hierarchy.",
     videoSrc: "/videos/dashboard.mp4",
     tech: ["Vue", "D3.js", "Firebase", "Design System"],
+    liveDemoUrl: "https://www.bytebuy.name.ng",
   },
   {
     id: 3,
@@ -26,6 +29,7 @@ const projects = [
       "A social product with polished micro-interactions and real-time messaging that kept users engaged longer while maintaining smooth performance across devices.",
     videoSrc: "/videos/mobile.mp4",
     tech: ["React Native", "GraphQL", "Framer Motion"],
+    liveDemoUrl: "https://www.bytebuy.name.ng",
   },
 ];
 
@@ -42,11 +46,10 @@ export default function Projects() {
 
   return (
     <section className="w-full max-w-7xl mx-auto  text-white">
-
       {/* Header */}
       <div className="flex items-end justify-between flex-wrap gap-6 mb-12">
         <div>
-              <div className="flex items-center gap-3 mb-4">
+          <div className="flex items-center gap-3 mb-4">
             <div className="h-px w-8 bg-white/20"></div>
             <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.3em] text-white/40">
               Selected works
@@ -88,10 +91,8 @@ export default function Projects() {
           transition={{ duration: 0.6 }}
           className="rounded-3xl border border-white/10 bg-[#0a0a0a] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.45)] backdrop-blur-xl"
         >
-
-          {/* Video */}
-          <div className="w-full aspect-video bg-black">
-            {project.videoSrc ? (
+          <div className="relative w-full aspect-video bg-black">
+              {project.videoSrc ? (
               <video
                 src={project.videoSrc}
                 autoPlay
@@ -105,13 +106,11 @@ export default function Projects() {
                 Loading video...
               </div>
             )}
+            <div className="absolute inset-0 bg-black/35 pointer-events-none"></div>
           </div>
-            {/* Dim Overlay */}
-              <div className="absolute inset-0 bg-black/35"></div>
-            
+
           {/* Content */}
           <div className="p-6 md:p-10">
-
             {/* Tech Stack */}
             <div className="flex flex-wrap gap-2 mb-5 hidden">
               {project.tech.map((t) => (
@@ -136,10 +135,14 @@ export default function Projects() {
 
             {/* Buttons */}
             <div className="flex flex-wrap gap-3">
-              <button className="flex items-center gap-2 px-5 py-3 bg-white text-black rounded-full text-sm font-semibold hover:bg-gray-200 transition">
+              <a
+                href={project.liveDemoUrl}
+                target="_blank"
+                className="flex items-center gap-2 px-5 py-3 bg-white text-black rounded-full text-sm font-semibold hover:bg-gray-200 transition"
+              >
                 <ExternalLink className="w-4 h-4" />
                 Live Demo
-              </button>
+              </a>
 
               <button className="flex items-center hidden gap-2 px-5 py-3 border border-white/20 rounded-full text-sm font-semibold hover:bg-white/10 transition">
                 <Github className="w-4 h-4" />
@@ -164,7 +167,6 @@ export default function Projects() {
           />
         ))}
       </div>
-
     </section>
   );
 }
