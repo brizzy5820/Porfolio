@@ -20,7 +20,7 @@ const projects = [
     title: "Authentic Essentials",
     description:
       "Complex reporting transformed into clear, actionable dashboards with fluid transitions and context-rich visual hierarchy.",
-    imageSrc: "public/images/projecimg_a.e.jpg",
+    imageSrc: "images/projecimg_a.e.jpg",
     tech: ["Lead generation site"],
     liveDemoUrl: "https://www.authenticessentials.com.ng/",
     featured: false,

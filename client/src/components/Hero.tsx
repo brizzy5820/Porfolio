@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 
 const slides = [
   {
@@ -8,7 +9,7 @@ const slides = [
     description:
       "Modern software systems built with scalable architecture to help your business offer fast and wide service.",
     image:
-      "https://images.unsplash.com/photo-1752436365654-de0ebc45784b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHB1cnBsZSUyMHRlY2glMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww",
+      "images/heroimg.avif",
   },
   {
     id: 2,
@@ -16,7 +17,7 @@ const slides = [
     description:
       "Strategic UX, persuasive copy, and performance-driven development that transforms visitors into qualified clients.",
     image:
-      "https://images.unsplash.com/photo-1650473395434-8674d953ef2f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjB8fHRlY2glMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww",
+      "images/heroimg2.avif",
   },
 
   {
@@ -25,23 +26,67 @@ const slides = [
     description:
       "From landing pages to dashboards — every interface is crafted to guide users toward meaningful action.",
     image:
-      "https://plus.unsplash.com/premium_photo-1733317248765-0b0da954e7fe?q=80&w=1855&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "images/heroimg3.avif",
   },
 ];
 
 export default function Hero() {
   const [index, setIndex] = useState(0);
+  const [showScrollCue, setShowScrollCue] = useState(false);
+  const [hasUserInteracted, setHasUserInteracted] = useState(false);
+  const heroRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % slides.length);
-    }, 6000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    const scrollContainer = heroRef.current?.closest("main");
+
+    const handleInteraction = () => {
+      setHasUserInteracted(true);
+      setShowScrollCue(false);
+    };
+
+    scrollContainer?.addEventListener("scroll", handleInteraction, {
+      passive: true,
+    });
+    window.addEventListener("wheel", handleInteraction, { passive: true });
+    window.addEventListener("touchmove", handleInteraction, { passive: true });
+    window.addEventListener("keydown", handleInteraction);
+
+    return () => {
+      scrollContainer?.removeEventListener("scroll", handleInteraction);
+      window.removeEventListener("wheel", handleInteraction);
+      window.removeEventListener("touchmove", handleInteraction);
+      window.removeEventListener("keydown", handleInteraction);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (hasUserInteracted) return;
+
+    const cueTimer = window.setTimeout(() => {
+      setShowScrollCue(true);
+    }, 8500);
+
+    return () => window.clearTimeout(cueTimer);
+  }, [hasUserInteracted]);
+
+  const handleScrollNext = () => {
+    setHasUserInteracted(true);
+    document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <div className="relative w-full h-[85vh] rounded-none overflow-hidden">
+    <div
+      ref={heroRef}
+      className="relative w-full h-[85vh] rounded-none overflow-hidden"
+    >
 
       <AnimatePresence mode="wait">
         <motion.div
@@ -115,6 +160,36 @@ export default function Hero() {
           />
         ))}
       </div>
+
+      <AnimatePresence>
+        {showScrollCue && (
+          <motion.button
+            type="button"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 16 }}
+            transition={{ duration: 0.45, ease: "easeOut" }}
+            onClick={handleScrollNext}
+            className="absolute bottom-20 right-5 md:right-10 flex items-center gap-3 rounded-full border border-white/15 bg-black/45 px-4 py-3 text-left text-white backdrop-blur-md shadow-[0_10px_40px_rgba(0,0,0,0.35)]"
+          >
+            <motion.span
+              animate={{ y: [0, 6, 0] }}
+              transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-black"
+            >
+              <ChevronDown className="h-4 w-4" />
+            </motion.span>
+            <span className="flex flex-col">
+              <span className="text-[10px] uppercase tracking-[0.28em] text-white/55">
+                Keep going
+              </span>
+              <span className="text-sm font-medium text-white">
+                Scroll to explore more
+              </span>
+            </span>
+          </motion.button>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
