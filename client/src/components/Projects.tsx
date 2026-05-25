@@ -9,7 +9,7 @@ const projects = [
     title: "ByteBuy",
     description:
       "A premium storefront optimized for speed, trust, and checkout completion. Reduced purchase friction from first click to payment.",
-    imageSrc: "public/images/projectimg_bytebuy.jpg",
+    imageSrc: "images/projectimg_bytebuy.jpg",
     tech: ["E-commerce"],
     liveDemoUrl: "https://www.bytebuy.name.ng",
     featured: true,
@@ -31,7 +31,7 @@ const projects = [
     title: "Free Express",
     description:
       "Polished micro-interactions and real-time messaging that kept users engaged longer across devices.",
-    imageSrc: "public/images/projectimg_f.e.jpg",
+    imageSrc: "images/projectimg_f.e.jpg",
     tech: ["React Native", "GraphQL", "Framer Motion"],
     liveDemoUrl: "https://freeexpress.vercel.app/",
     featured: false,
@@ -42,7 +42,7 @@ const projects = [
     title: "Atelier",
     description:
       "A premium storefront optimized for speed, trust, and checkout completion. Reduced purchase friction from first click to payment.",
-    imageSrc: "public/images/projecimg_atelier.jpg",
+    imageSrc: "images/projecimg_atelier.jpg",
     tech: ["E-commerce"],
     liveDemoUrl: "https://atelier-xenith.vercel.app/",
     featured: false,
@@ -53,7 +53,7 @@ const projects = [
     title: "Estatevita",
     description:
       "A premium storefront optimized for speed, trust, and checkout completion. Reduced purchase friction from first click to payment.",
-    imageSrc: "public/images/projectimg_realestate.jpg",
+    imageSrc: "images/projectimg_realestate.jpg",
     tech: ["Real estate"],
     liveDemoUrl: "https://atelier-xenith.vercel.app/",
     featured: false,
