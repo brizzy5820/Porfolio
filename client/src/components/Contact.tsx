@@ -3,7 +3,7 @@ import { Send, MapPin, Phone, ArrowUpRight } from "lucide-react";
 
 export default function Contact() {
   return (
-    <section className="w-full  md:px-10 py-24 flex justify-center relative">
+    <section className="w-full  md:px-10 flex justify-center relative">
 
       {/* Background Glow */}
       <div className="absolute top-[-10%] right-[10%] w-[420px] h-[420px] bg-cyan-500/10 blur-[120px] rounded-full pointer-events-none" />

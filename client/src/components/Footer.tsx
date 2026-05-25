@@ -71,12 +71,7 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/40">
-          <p>© {currentYear} Hypertech. All rights reserved.</p>
-          <div className="flex items-center gap-2">
-            <span>Designed with</span>
-            <span className="text-red-500">💜</span>
-            <span>in standard timezone</span>
-          </div>
+          <p>© {currentYear} Boluwatife. All rights reserved.</p>
         </div>
       </div>
     </footer>

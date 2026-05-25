@@ -8,7 +8,7 @@ const slides = [
     description:
       "Modern software systems built with scalable architecture to help your business offer fast and wide service.",
     image:
-      "https://images.unsplash.com/photo-1568952433726-3896e3881c65?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHRlY2h8ZW58MHx8MHx8fDA%3D",
+      "https://images.unsplash.com/photo-1752436365654-de0ebc45784b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHB1cnBsZSUyMHRlY2glMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww",
   },
   {
     id: 2,
